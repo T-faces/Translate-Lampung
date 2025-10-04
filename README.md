@@ -19,7 +19,7 @@ Menyediakan layanan untuk penterjemahan bahasa Indonesia ke bahasa Lampung dan s
 
 ## Progressive Web Application
 
-Aplikasi dapat diakses melalui situs: https://meizano.github.io/lampung/ 
+Aplikasi dapat diakses melalui situs: https://t-faces.github.io/Translate-Lampung/ 
 
 ![QR COde](QRCode-Github-Meizano-Lampung.png)
 
