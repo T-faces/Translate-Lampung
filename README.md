@@ -25,7 +25,7 @@ Aplikasi dapat diakses melalui situs: https://t-faces.github.io/Translate-Lampun
 
 ## UPDATE
 
-1. Fitur Toogle (Gelap-Terang) All Device.
+1. Fitur Toogle (Gelap-Terang) Mode Desktop Device Only.
 
 ## License
 
