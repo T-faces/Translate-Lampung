@@ -21,7 +21,7 @@ Menyediakan layanan untuk penterjemahan bahasa Indonesia ke bahasa Lampung dan s
 
 Aplikasi dapat diakses melalui situs: https://t-faces.github.io/Translate-Lampung/ 
 
-![QR COde](QRCode-Github-Meizano-Lampung.png)
+![QR COde](QRCode-Github-Tfaces-Lampung.jpeg)
 
 ## UPDATE
 
