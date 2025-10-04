@@ -13,9 +13,41 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link rel="manifest" href="./manifest.json">
+    <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111827;
+      --card: #f3f4f6;
+    }
+    html.dark {
+      --bg: #0b1220;
+      --fg: #e6eef8;
+      --card: #1f2937;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: var(--card);
+      color: var(--fg);
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
+    <button id="theme-toggle" class="toggle-btn">🌙 Gelap</button>
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-sm-12 col-md-12 col-lg-10">
@@ -116,6 +148,28 @@
     <script src="./js/aksaraLampung.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/offline.js"></script>
+<!-- toogle -->
+    <script>
+    (function(){
+      const root = document.documentElement;
+      const toggleBtn = document.getElementById('theme-toggle');
+      const STORAGE_KEY = 'theme-preference';
+      function setDark(isDark, persist = true){
+        root.classList.toggle('dark', !!isDark);
+        toggleBtn.textContent = isDark ? '☀️ Terang' : '🌙 Gelap';
+        if(persist) localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
+      }
+      // cek preferensi tersimpan / sistem
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if(stored){
+        setDark(stored === 'dark', false);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setDark(prefersDark, false);
+      }
+      toggleBtn.addEventListener('click', () => setDark(!root.classList.contains('dark')));
+    })();
+  </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127744902-1"></script>
     <script>
