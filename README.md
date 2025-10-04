@@ -1,3 +1,4 @@
+Copyright Meizano
 ## Synopsis
 
 Lampung Dictionary adalah kamus digital Indonesia - Lampung yang menterjemahkan bahasa indonesia ke bahasa lampung dengan aksaranya dan sebaliknya. Program dikembangkan dengan menggunakan HTML, CSS, JavaScript, dan API (melalui PHP).
