@@ -23,6 +23,10 @@ Aplikasi dapat diakses melalui situs: https://t-faces.github.io/Translate-Lampun
 
 ![QR COde](QRCode-Github-Meizano-Lampung.png)
 
+## UPDATE
+
+1. Fitur Toogle (Gelap-Terang)
+
 ## License
 
 GNU GPLv3
