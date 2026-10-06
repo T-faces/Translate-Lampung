@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'AksaraLampung';
   src: url('../fonts/aksara-Lampung-Unila-v2.ttf') format('truetype');
+  font-display: block;
 }
 
 :root {
@@ -505,3 +506,20 @@ button { cursor: pointer; }
   }
 }
 
+
+/* Force Lampung script rendering on phone and tablet. */
+.aksaraLampung,
+#hasilTerjemah .aksaraLampung,
+#petunjukAksara .aksaraLampung,
+.script-main .aksaraLampung,
+#aksaraAsal {
+  font-family: 'AksaraLampung' !important;
+  font-synthesis: none !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+.result-source-label { font-family: inherit !important; }
+@media (max-width: 1024px) {
+  #hasilTerjemah .aksaraLampung { display:block !important; font-family:'AksaraLampung' !important; font-size:2.35rem !important; line-height:1.5 !important; }
+  #petunjukAksara .aksaraLampung { font-family:'AksaraLampung' !important; }
+}
