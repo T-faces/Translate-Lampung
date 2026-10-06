@@ -523,3 +523,53 @@ button { cursor: pointer; }
   #hasilTerjemah .aksaraLampung { display:block !important; font-family:'AksaraLampung' !important; font-size:2.35rem !important; line-height:1.5 !important; }
   #petunjukAksara .aksaraLampung { font-family:'AksaraLampung' !important; }
 }
+
+
+/* ===== FINAL MOBILE/TABLET AKSARA FONT FIX ===== */
+@font-face {
+  font-family: "AksaraLampung";
+  src: url("../fonts/aksara-Lampung-Unila-v2.ttf") format("truetype");
+  font-display: block;
+}
+
+.aksaraLampung {
+  font-family: "AksaraLampung" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-synthesis: none !important;
+  text-rendering: optimizeLegibility;
+}
+
+#hasilTerjemah .aksaraLampung {
+  font-family: "AksaraLampung" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  display: inline-block !important;
+}
+
+#petunjukAksara .aksaraLampung,
+.script-main .aksaraLampung,
+#aksaraAsal {
+  font-family: "AksaraLampung" !important;
+}
+
+@media (max-width: 1024px) {
+  #hasilTerjemah .aksaraLampung {
+    font-family: "AksaraLampung" !important;
+    font-size: 2.25rem !important;
+    line-height: 1.5 !important;
+    display: inline-block !important;
+  }
+
+  #petunjukAksara .aksaraLampung {
+    font-family: "AksaraLampung" !important;
+    display: inline-block !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #hasilTerjemah .aksaraLampung {
+    font-family: "AksaraLampung" !important;
+    font-size: 2rem !important;
+  }
+}
