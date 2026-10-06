@@ -4,21 +4,6 @@ var kamusJSON = {};
 var kamus = {};
 
 var hasilTerjemah = document.getElementById('hasilTerjemah');
-var AKSARA_FONT = "'AksaraLampung'";
-function applyAksaraFont(el) {
-    if (!el) return;
-    el.classList.add('aksaraLampung');
-    el.style.setProperty('font-family', AKSARA_FONT, 'important');
-    el.style.setProperty('font-style', 'normal', 'important');
-    el.style.setProperty('font-weight', '400', 'important');
-}
-function ensureAksaraFont() {
-    if (document.fonts && document.fonts.load) {
-        return document.fonts.load('32px AksaraLampung').catch(function(){ return []; });
-    }
-    return Promise.resolve();
-}
-ensureAksaraFont();
 
 // Memeriksa apakah web storage tersedia
 function storageAvailable(type) {
@@ -169,7 +154,7 @@ kataAsal.onkeyup = function () {
         let strong = createNode("strong");
         strong.innerHTML = '<span class="result-script-label">Aksara Lampung</span><br/>';
         let spanAksara = createNode('span');
-        applyAksaraFont(spanAksara);
+        spanAksara.classList.add("aksaraLampung");
         append(strong, spanAksara);
         append(hasilTerjemah, strong);
 
@@ -196,7 +181,7 @@ kataAsal.onkeyup = function () {
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
                     span1.innerHTML = "";
                     span2.innerHTML = dt[3] || aksarakan(dt[1]);
-                    applyAksaraFont(span2); //diubah menjadi aksara
+                    span2.classList.add("aksaraLampung"); //diubah menjadi aksara
                     span3.innerHTML = "";
                     if (dt[2] != null) {
                         let sup = createNode('sup');
@@ -215,7 +200,7 @@ kataAsal.onkeyup = function () {
                         span2 = createNode('span'),
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
                     span1.innerHTML = dt[3] || aksarakan(dt[0]);
-                    applyAksaraFont(span1); //diubah menjadi aksara
+                    span1.classList.add("aksaraLampung"); //diubah menjadi aksara
                     span2.innerHTML = "";
                     //jika ada dialek
                     if (dt[2] != null) {
