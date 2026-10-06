@@ -152,7 +152,7 @@ kataAsal.onkeyup = function () {
         hasilTerjemah.innerHTML = '';
         hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
         let strong = createNode("strong");
-        strong.innerHTML = '<span class="result-script-label">Aksara Lampung</span><br/>';
+        strong.innerHTML = kataAsal.value + ' (' + bahasa.value + ') : <br/>';
         let spanAksara = createNode('span');
         spanAksara.classList.add("aksaraLampung");
         append(strong, spanAksara);
@@ -165,7 +165,7 @@ kataAsal.onkeyup = function () {
 
             //membuat span dan menambahkannya ke div#hasilTerjemah
             let pKata = createNode("p");
-            pKata.innerHTML = '<span class="result-script-label">Aksara Lampung</span>'; pKata.classList.add('result-source-label');
+            pKata.innerHTML = kataAl[i] + ' (' + bahasa.value + ') ';
             append(hasilTerjemah, createNode("hr"));
             append(hasilTerjemah, pKata);
             append(hasilTerjemah, createNode("hr"));
@@ -179,10 +179,10 @@ kataAsal.onkeyup = function () {
                         span1 = createNode('span'),
                         span2 = createNode('span'),
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
-                    span1.innerHTML = "";
-                    span2.innerHTML = dt[3] || aksarakan(dt[1]);
+                    span1.innerHTML = dt[0] + " = ";
+                    span2.innerHTML = aksarakan(dt[1]);
                     span2.classList.add("aksaraLampung"); //diubah menjadi aksara
-                    span3.innerHTML = "";
+                    span3.innerHTML = " (" + dt[1] + ")";
                     if (dt[2] != null) {
                         let sup = createNode('sup');
                         sup.innerHTML = dt[2];
@@ -199,16 +199,16 @@ kataAsal.onkeyup = function () {
                         span1 = createNode('span'),
                         span2 = createNode('span'),
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
-                    span1.innerHTML = dt[3] || aksarakan(dt[0]);
+                    span1.innerHTML = aksarakan(dt[0]);
                     span1.classList.add("aksaraLampung"); //diubah menjadi aksara
-                    span2.innerHTML = "";
+                    span2.innerHTML = " (" + dt[0] + ")";
                     //jika ada dialek
                     if (dt[2] != null) {
                         let sup = createNode('sup');
                         sup.innerHTML = dt[2];
                         append(span2, sup);
                     }
-                    span3.innerHTML = "";
+                    span3.innerHTML = " = " + dt[1];
                     append(p, span1); // memakai fungsi append ke parameter pertama
                     append(p, span2);
                     append(p, span3);
