@@ -259,7 +259,7 @@ kbd {
   font-size: .65rem;
 }
 
-.aksara-input-wrap { display: none; }
+.aksara-input-wrap {\n  display: none;\n  margin-top: 16px;\n  border: 1px solid var(--line);\n  border-radius: 18px;\n  background: var(--surface-2);\n  padding: 15px 17px 11px;\n}\n\n.aksara-input-wrap:has(#aksaraAsal.show) { display: block; }\n\n.aksara-input-wrap label {\n  display: block;\n  margin: 0;\n  color: var(--text);\n  font-size: .78rem;\n  font-weight: 800;\n}
 
 .script-panel, .result-panel {
   margin-top: 22px;
