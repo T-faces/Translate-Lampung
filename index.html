@@ -1,260 +1,230 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Kamus Indonesia-Lampung">
-    <meta name="author" content="Meizano">
-    <meta name="theme-color" content="#5FAAE5" />
-    <title>Kamus Indonesia-Lampung</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
-    <link rel="manifest" href="./manifest.json">
-    <style>
-    :root {
-      --bg: #ffffff;
-      --fg: #111827;
-      --card: #f3f4f6;
-    }
-    html.dark {
-      --bg: #0b1220;
-      --fg: #e6eef8;
-      --card: #1f2937;
-    }
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      transition: background 0.3s ease, color 0.3s ease;
-    }
- /* Canvas background dekorasi */
-    #canvas-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .toggle-btn {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: var(--card);
-      color: var(--fg);
-      font-weight: bold;
-    }
-        /* Responsive button for all devices */
-    @media (max-width: 767px) {
-      .toggle-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-      }
-    }
-    @media (min-width: 768px) and (max-width: 1024px) {
-      .toggle-btn {
-        padding: 0.45rem 1rem;
-        font-size: 1rem;
-      }
-    }
-    @media (min-width: 1025px) {
-      .toggle-btn {
-        padding: 0.5rem 1.2rem;
-        font-size: 1.05rem;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Kamus dan penerjemah Bahasa Indonesia–Lampung dengan dukungan Aksara Lampung dan mode offline.">
+  <meta name="author" content="Meizano">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="color-scheme" content="light dark">
+  <title>Kamus Indonesia–Lampung | Aksara Lampung</title>
+  <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="manifest" href="./manifest.json">
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <canvas id="canvas-bg"></canvas>
-    <button id="theme-toggle" class="toggle-btn">🌙 Gelap</button>
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-sm-12 col-md-12 col-lg-10">
-                <h1 class="text-center" id="judulAplikasi">Kamus Indonesia-Lampung</h1>
-                <form id="terjemahForm">
-                    <fieldset>
-                        <div class="form-group text-center">
-                            <input id="indonesia" name="bahasa" type="radio" value="indonesia" checked><label for="indonesia">Indonesia</label>
-                            <input id="lampung" name="bahasa" type="radio" value="lampung"><label for="lampung">Lampung</label>
-                        </div>
-                        <div class="form-group">
-                            <input aria-label="Kata/kalimat yang diartikan" id="kataAsal" class="form-control" placeholder="Kata/kalimat yang diartikan" name="kataAsal"
-                                type="text" autofocus required>
-                            <input aria-label="Aksara yang diartikan" id="aksaraAsal" class="form-control" placeholder="Aksara yang diartikan" name="aksaraAsal"
-                                type="text" autocomplete="off">
-                        </div>
-                    </fieldset>
-                </form>
-                <div id="petunjukAksara" class="">
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">k</span><br /> (ka) k
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">g</span><br /> (ga) g
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">G</span><br /> (nga) G
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">p</span><br /> (pa) p
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">b</span><br /> (ba) b
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">m</span><br /> (ma) m
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">t</span><br /> (ta) t
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">d</span><br /> (da) d
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">n</span><br /> (na) n
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">c</span><br /> (ca) c
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">j</span><br /> (ja) j
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">Y</span><br /> (nya) Y
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">y</span><br /> (ya) y
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">a</span><br /> a </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">l</span><br /> (la) l
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">r</span><br /> (ra) r
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">s</span><br /> (sa) s
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">w</span><br /> (wa) w
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">h</span><br /> (ha) h
-                    </button>
-                    <button type="button" class="btn btn-default"><span class="aksaraLampung">H</span><br /> (gha) H
-                    </button>
-                    <br />
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">ai</span><br /> i
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aE</span><br />(é) E
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">ae</span><br /> e
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aX</span><br /> (ang) X
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aR</span><br /> (ar) R
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aN</span><br /> (an) N
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">ao</span><br /> o
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">au</span><br /> u
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aU</span><br /> (au) U
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aI</span><br /> (ai) I
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aA</span><br /> (ah) A
-                    </button>
-                    <button type="button" class="btn btn-secondary"><span class="aksaraLampung">x</span><br /> x
-                    </button>
-                </div>
-            </div>
+  <canvas id="canvas-bg" aria-hidden="true"></canvas>
+
+  <main class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">𑤀</div>
+        <div>
+          <div class="brand-kicker">KAMUS DIGITAL</div>
+          <h1 id="judulAplikasi">Indonesia <span>↔</span> Lampung</h1>
+          <p>Terjemahkan kata, kenali Aksara Lampung, dan gunakan kapan saja.</p>
         </div>
-        <div class="row justify-content-md-center">
-            <div class="col-sm-12 col-md-12 col-lg-10">
-                <div id="hasilTerjemah">
-                </div>
-            </div>
+      </div>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Ganti tema">🌙</button>
+    </header>
+
+    <section class="translator-card" aria-label="Penerjemah">
+      <div class="card-top">
+        <div>
+          <span class="eyebrow">PENERJEMAH</span>
+          <h2>Temukan arti kata dengan cepat</h2>
         </div>
-    </div>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-    <!-- <script src="./js/jquery-1.11.3.min.js"></script> -->
-    <!-- <script src="./js/bootstrap.min.js"></script> -->
-    <!--		<script src="dispatcher/indonesia2lampung.js"></script>-->
-    <script src="./js/aksaraLampung.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/offline.js"></script>
-<!-- toogle -->
-    <script>
-    (function(){
-      const root = document.documentElement;
-      const toggleBtn = document.getElementById('theme-toggle');
-      const STORAGE_KEY = 'theme-preference';
-      function setDark(isDark, persist = true){
-        root.classList.toggle('dark', !!isDark);
-        toggleBtn.textContent = isDark ? '☀️ Terang' : '🌙 Gelap';
-        if(persist) localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
+        <span class="offline-badge"><i></i> PWA • Offline</span>
+      </div>
+
+      <form id="terjemahForm">
+        <fieldset>
+          <legend class="sr-only">Pilih bahasa sumber</legend>
+
+          <div class="language-switcher" role="radiogroup" aria-label="Bahasa sumber">
+            <input id="indonesia" name="bahasa" type="radio" value="indonesia" checked>
+            <label for="indonesia"><span>🇮🇩</span> Indonesia</label>
+            <input id="lampung" name="bahasa" type="radio" value="lampung">
+            <label for="lampung"><span>🌿</span> Lampung</label>
+          </div>
+
+          <div class="input-wrap">
+            <div class="input-heading">
+              <label for="kataAsal">Kata atau kalimat</label>
+              <button id="clearInput" class="text-btn" type="button" aria-label="Hapus input">Hapus</button>
+            </div>
+            <input
+              id="kataAsal"
+              class="modern-input"
+              placeholder="Ketik kata atau kalimat di sini…"
+              name="kataAsal"
+              type="text"
+              autocomplete="off"
+              autofocus
+              required
+              aria-describedby="inputHint"
+            >
+            <div class="input-footer">
+              <span id="inputHint">Hasil terjemahan muncul otomatis saat Anda mengetik.</span>
+              <kbd>/</kbd>
+            </div>
+          </div>
+
+          <div id="aksaraAsal" class="aksara-input-wrap" aria-label="Input Aksara Lampung">
+            <label for="aksaraAsalInput">Aksara Lampung</label>
+            <input id="aksaraAsalInput" type="text" autocomplete="off" placeholder="Masukkan Aksara Lampung…">
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="script-panel" aria-label="Petunjuk Aksara Lampung">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">REFERENSI AKSARA</span>
+            <h3>Petunjuk Aksara Lampung</h3>
+          </div>
+          <span class="panel-note">Klik karakter untuk membantu mengenali bentuk</span>
+        </div>
+
+        <div id="petunjukAksara">
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">k</span><small>(ka) k</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">g</span><small>(ga) g</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">G</span><small>(nga) G</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">p</span><small>(pa) p</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">b</span><small>(ba) b</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">m</span><small>(ma) m</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">t</span><small>(ta) t</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">d</span><small>(da) d</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">n</span><small>(na) n</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">c</span><small>(ca) c</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">j</span><small>(ja) j</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">Y</span><small>(nya) Y</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">y</span><small>(ya) y</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">a</span><small>a</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">l</span><small>(la) l</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">r</span><small>(ra) r</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">s</span><small>(sa) s</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">w</span><small>(wa) w</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">h</span><small>(ha) h</small></button>
+          <button type="button" class="btn btn-default"><span class="aksaraLampung">H</span><small>(gha) H</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">ai</span><small>i</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aE</span><small>(é) E</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">ae</span><small>e</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aX</span><small>(ang) X</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aR</span><small>(ar) R</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aN</span><small>(an) N</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">ao</span><small>o</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">au</span><small>u</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aU</span><small>(au) U</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aI</span><small>(ai) I</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">aA</span><small>(ah) A</small></button>
+          <button type="button" class="btn btn-secondary"><span class="aksaraLampung">x</span><small>x</small></button>
+        </div>
+      </section>
+
+      <section class="result-panel" aria-live="polite" aria-label="Hasil terjemahan">
+        <div class="result-heading">
+          <div>
+            <span class="eyebrow">HASIL TERJEMAHAN</span>
+            <h3>Arti yang ditemukan</h3>
+          </div>
+          <button id="copyResult" class="copy-btn" type="button">⧉ Salin</button>
+        </div>
+        <div id="hasilTerjemah">
+          <div class="empty-result">
+            <span>⌕</span>
+            <p>Mulai mengetik untuk melihat hasil terjemahan.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer class="app-footer">
+      <span>Kamus Indonesia–Lampung</span>
+      <span>•</span>
+      <span>Melestarikan bahasa dan Aksara Lampung secara digital</span>
+    </footer>
+  </main>
+
+  <script src="./js/aksaraLampung.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/offline.js"></script>
+  <script src="./js/ui-modern.js"></script>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggleBtn = document.getElementById('theme-toggle');
+      var key = 'theme-preference';
+
+      function setTheme(dark, save) {
+        root.classList.toggle('dark', dark);
+        toggleBtn.textContent = dark ? '☀️' : '🌙';
+        toggleBtn.setAttribute('aria-label', dark ? 'Gunakan tema terang' : 'Gunakan tema gelap');
+        if (save) localStorage.setItem(key, dark ? 'dark' : 'light');
       }
-      // cek preferensi tersimpan / sistem
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if(stored){
-        setDark(stored === 'dark', false);
-      } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setDark(prefersDark, false);
-      }
-      toggleBtn.addEventListener('click', () => setDark(!root.classList.contains('dark')));
+
+      var saved = localStorage.getItem(key);
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(dark, false);
+      toggleBtn.addEventListener('click', function () {
+        setTheme(!root.classList.contains('dark'), true);
+      });
     })();
 
-        // Canvas background animasi ornamen adat Lampung
-    const canvas = document.getElementById('canvas-bg');
-    const ctx = canvas.getContext('2d');
-    let width, height;
+    (function () {
+      var canvas = document.getElementById('canvas-bg');
+      var ctx = canvas.getContext('2d');
+      var width, height, ornaments = [];
 
-    function resize(){
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
 
-    const ornaments = [];
-    const colors = ["#FFD700", "#FF4500", "#DAA520", "#FF6347"];
-
-    for(let i=0;i<40;i++){
-      ornaments.push({
-        x: Math.random()*width,
-        y: Math.random()*height,
-        r: Math.random()*6+3,
-        dx: (Math.random()-0.5)*1.2,
-        dy: (Math.random()-0.5)*1.2,
-        color: colors[Math.floor(Math.random()*colors.length)]
-      });
-    }
-
-    function animate(){
-      ctx.clearRect(0,0,width,height);
-      ornaments.forEach(o => {
-        ctx.beginPath();
-        ctx.arc(o.x,o.y,o.r,0,Math.PI*2);
-        ctx.fillStyle = o.color;
-        ctx.fill();
-
-        o.x += o.dx;
-        o.y += o.dy;
-
-        if(o.x<0||o.x>width) o.dx*=-1;
-        if(o.y<0||o.y>height) o.dy*=-1;
-      });
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-  </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127744902-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
+      function init() {
+        ornaments = [];
+        for (var i = 0; i < 22; i++) {
+          ornaments.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 3 + 1,
+            dx: (Math.random() - .5) * .35,
+            dy: (Math.random() - .5) * .35
+          });
         }
-        gtag('js', new Date());
+      }
 
-        gtag('config', 'UA-127744902-1');
-    </script>
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(15, 118, 110, .12)';
+        ornaments.forEach(function (o) {
+          ctx.beginPath();
+          ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+          ctx.fill();
+          o.x += o.dx; o.y += o.dy;
+          if (o.x < 0 || o.x > width) o.dx *= -1;
+          if (o.y < 0 || o.y > height) o.dy *= -1;
+        });
+        requestAnimationFrame(animate);
+      }
+
+      resize();
+      init();
+      window.addEventListener('resize', function () { resize(); init(); });
+      animate();
+    })();
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127744902-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-127744902-1');
+  </script>
 </body>
-
 </html>
