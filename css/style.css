@@ -433,3 +433,75 @@ button { cursor: pointer; }
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
   #canvas-bg { display: none; }
 }
+
+/* ===== AKSARA VISIBILITY: MOBILE + TRANSLATION RESULTS ===== */
+#petunjukAksara .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  vertical-align: middle;
+  min-width: 58px;
+}
+#petunjukAksara .btn .aksaraLampung {
+  display: inline-block;
+  font-family: 'AksaraLampung' !important;
+  font-size: 2rem !important;
+  line-height: 1;
+  color: var(--text);
+  font-weight: 400;
+}
+#petunjukAksara .btn small {
+  display: inline-block;
+  font-size: .72rem;
+  line-height: 1;
+}
+#hasilTerjemah {
+  color: var(--text);
+}
+#hasilTerjemah .aksaraLampung {
+  display: inline-block;
+  font-family: 'AksaraLampung' !important;
+  font-size: 2rem !important;
+  line-height: 1.35;
+  vertical-align: middle;
+  color: var(--primary);
+  font-weight: 400;
+  margin: 0 4px;
+}
+#hasilTerjemah p {
+  line-height: 1.8;
+  margin: 10px 0;
+}
+#hasilTerjemah > strong {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  line-height: 2;
+}
+@media (max-width: 640px) {
+  #petunjukAksara .btn {
+    min-width: 0;
+    min-height: 68px;
+    padding: 7px 8px;
+    flex-direction: column;
+    gap: 4px;
+  }
+  #petunjukAksara .btn .aksaraLampung {
+    display: block !important;
+    font-size: 2rem !important;
+    line-height: 1.05;
+  }
+  #petunjukAksara .btn small {
+    font-size: .62rem;
+  }
+  #hasilTerjemah .aksaraLampung {
+    font-size: 2.15rem !important;
+  }
+  #hasilTerjemah > strong {
+    font-size: .82rem;
+  }
+}
+
