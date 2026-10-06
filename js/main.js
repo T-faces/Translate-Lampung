@@ -5,6 +5,18 @@ var kamus = {};
 
 var hasilTerjemah = document.getElementById('hasilTerjemah');
 
+/* Terapkan font langsung ke hasil aksara yang dibuat secara dinamis. */
+function gunakanFontAksara(el) {
+    if (!el) return el;
+    el.classList.add("aksaraLampung");
+    el.style.setProperty("font-family", "AksaraLampung", "important");
+    el.style.setProperty("font-style", "normal", "important");
+    el.style.setProperty("font-weight", "400", "important");
+    el.style.setProperty("font-synthesis", "none", "important");
+    return el;
+}
+
+
 /* Memastikan font Aksara Lampung benar-benar dimuat pada HP/tablet. */
 (function loadAksaraLampungFont() {
     if (!('FontFace' in window) || !document.fonts) return;
@@ -175,7 +187,7 @@ kataAsal.onkeyup = function () {
         let strong = createNode("strong");
         strong.innerHTML = '<span class="result-script-label">Aksara Lampung</span><br/>';
         let spanAksara = createNode('span');
-        spanAksara.classList.add("aksaraLampung");
+        gunakanFontAksara(spanAksara);
         append(strong, spanAksara);
         append(hasilTerjemah, strong);
 
@@ -202,7 +214,7 @@ kataAsal.onkeyup = function () {
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
                     span1.innerHTML = dt[0] + " = ";
                     span2.innerHTML = aksarakan(dt[1]);
-                    span2.classList.add("aksaraLampung"); //diubah menjadi aksara
+                    gunakanFontAksara(span2); //diubah menjadi aksara
                     span3.innerHTML = " (" + dt[1] + ")";
                     if (dt[2] != null) {
                         let sup = createNode('sup');
@@ -221,7 +233,7 @@ kataAsal.onkeyup = function () {
                         span2 = createNode('span'),
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
                     span1.innerHTML = aksarakan(dt[0]);
-                    span1.classList.add("aksaraLampung"); //diubah menjadi aksara
+                    gunakanFontAksara(span1); //diubah menjadi aksara
                     span2.innerHTML = " (" + dt[0] + ")";
                     //jika ada dialek
                     if (dt[2] != null) {
