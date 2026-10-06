@@ -573,3 +573,30 @@ button { cursor: pointer; }
     font-size: 2rem !important;
   }
 }
+
+
+/* ===== DEVICE FONT SAFETY: PHONE + TABLET ===== */
+@media screen and (max-width: 1024px) {
+  #hasilTerjemah .aksaraLampung,
+  #hasilTerjemah strong .aksaraLampung,
+  #hasilTerjemah p .aksaraLampung,
+  #hasilTerjemah span.aksaraLampung {
+    font-family: 'AksaraLampung' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-variant: normal !important;
+    font-synthesis: none !important;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+}
+@media screen and (max-width: 640px) {
+  #hasilTerjemah .aksaraLampung,
+  #hasilTerjemah strong .aksaraLampung,
+  #hasilTerjemah p .aksaraLampung,
+  #hasilTerjemah span.aksaraLampung {
+    font-family: 'AksaraLampung' !important;
+    font-size: 2.15rem !important;
+    line-height: 1.5 !important;
+  }
+}
