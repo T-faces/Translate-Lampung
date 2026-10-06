@@ -1,31 +1,16 @@
 {
   "name": "Kamus Aksara Lampung-Indonesia",
   "short_name": "Kamus Lampung",
-  "start_url": ".",
+  "description": "Kamus dan penerjemah Bahasa Indonesia-Lampung dengan dukungan Aksara Lampung.",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FFF",
-  "theme_color": "#5FAAE5",
+  "background_color": "#f4f7f8",
+  "theme_color": "#0f766e",
   "icons": [
-    {
-      "src": "./images/icons/app-icon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "./images/icons/app-icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "./images/icons/app-icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    },
-    {
-      "src": "./images/icons/app-icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+    {"src":"./images/icons/app-icon-96x96.png","sizes":"96x96","type":"image/png"},
+    {"src":"./images/icons/app-icon-144x144.png","sizes":"144x144","type":"image/png"},
+    {"src":"./images/icons/app-icon-256x256.png","sizes":"256x256","type":"image/png"},
+    {"src":"./images/icons/app-icon-512x512.png","sizes":"512x512","type":"image/png"}
   ]
 }
