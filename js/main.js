@@ -180,9 +180,9 @@ kataAsal.onkeyup = function () {
                         span2 = createNode('span'),
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
                     span1.innerHTML = dt[0] + " = ";
-                    span2.innerHTML = aksarakan(dt[1]);
+                    span2.innerHTML = dt[3] || aksarakan(dt[1]);
                     span2.classList.add("aksaraLampung"); //diubah menjadi aksara
-                    span3.innerHTML = " (" + dt[1] + ")";
+                    span3.innerHTML = "";
                     if (dt[2] != null) {
                         let sup = createNode('sup');
                         sup.innerHTML = dt[2];
@@ -201,14 +201,14 @@ kataAsal.onkeyup = function () {
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
                     span1.innerHTML = aksarakan(dt[0]);
                     span1.classList.add("aksaraLampung"); //diubah menjadi aksara
-                    span2.innerHTML = " (" + dt[0] + ")";
+                    span2.innerHTML = "";
                     //jika ada dialek
                     if (dt[2] != null) {
                         let sup = createNode('sup');
                         sup.innerHTML = dt[2];
                         append(span2, sup);
                     }
-                    span3.innerHTML = " = " + dt[1];
+                    span3.innerHTML = "";
                     append(p, span1); // memakai fungsi append ke parameter pertama
                     append(p, span2);
                     append(p, span3);
