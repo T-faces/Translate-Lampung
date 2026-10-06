@@ -5,6 +5,27 @@ var kamus = {};
 
 var hasilTerjemah = document.getElementById('hasilTerjemah');
 
+/* Memastikan font Aksara Lampung benar-benar dimuat pada HP/tablet. */
+(function loadAksaraLampungFont() {
+    if (!('FontFace' in window) || !document.fonts) return;
+    var aksaraFont = new FontFace(
+        'AksaraLampung',
+        'url(./fonts/aksara-Lampung-Unila-v2.ttf)',
+        { style: 'normal', weight: '400' }
+    );
+    aksaraFont.load().then(function (font) {
+        document.fonts.add(font);
+        document.documentElement.classList.add('aksara-font-ready');
+        var nodes = document.querySelectorAll('.aksaraLampung');
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].style.fontFamily = 'AksaraLampung';
+        }
+    }).catch(function (error) {
+        console.warn('Font Aksara Lampung gagal dimuat:', error);
+    });
+})();
+
+
 // Memeriksa apakah web storage tersedia
 function storageAvailable(type) {
     try {
